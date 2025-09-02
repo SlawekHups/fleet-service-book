@@ -6,6 +6,7 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Schemas\Schema;
 
 class MaintenanceRecordForm
@@ -17,6 +18,7 @@ class MaintenanceRecordForm
                 Select::make('vehicle_id')
                     ->label('Pojazd')
                     ->relationship('vehicle', 'registration_number')
+                    ->preload()
                     ->searchable()
                     ->required(),
                 DatePicker::make('date')
@@ -40,6 +42,7 @@ class MaintenanceRecordForm
                 Select::make('vendor_id')
                     ->label('Dostawca / Serwis')
                     ->relationship('vendor', 'name')
+                    ->preload()
                     ->searchable(),
                 TextInput::make('invoice_number')->label('Faktura'),
                 TextInput::make('total_cost')
@@ -53,6 +56,13 @@ class MaintenanceRecordForm
                     ->default('PLN'),
                 Textarea::make('notes')
                     ->label('Notatki')
+                    ->columnSpanFull(),
+                SpatieMediaLibraryFileUpload::make('attachments')
+                    ->label('Załączniki (faktury, zdjęcia)')
+                    ->collection('attachments')
+                    ->multiple()
+                    ->downloadable()
+                    ->openable()
                     ->columnSpanFull(),
             ]);
     }

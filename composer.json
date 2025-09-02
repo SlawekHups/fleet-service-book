@@ -9,9 +9,13 @@
         "php": "^8.2",
         "barryvdh/laravel-dompdf": "^3.1",
         "filament/filament": "^4.0",
+        "filament/spatie-laravel-media-library-plugin": "^4.0",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "spatie/laravel-activitylog": "^4.10",
+        "spatie/laravel-backup": "^9.3",
+        "spatie/laravel-medialibrary": "^11.14",
         "spatie/laravel-permission": "^6.21"
     },
     "require-dev": {

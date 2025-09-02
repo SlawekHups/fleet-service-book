@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Vehicles\Schemas;
 
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
@@ -41,13 +41,13 @@ class VehicleForm
                 Toggle::make('active')->label('Aktywny')->required(),
                 DatePicker::make('next_service_due_date')->label('Następny serwis (data)'),
                 TextInput::make('next_service_due_km')->label('Następny serwis (km)')->numeric(),
-                FileUpload::make('attachments')
-                    ->label('Załączniki (placeholder)')
+                SpatieMediaLibraryFileUpload::make('photos')
+                    ->label('Zdjęcia / Skany')
+                    ->collection('photos')
                     ->multiple()
                     ->downloadable()
                     ->openable()
-                    ->dehydrated(false)
-                    ->helperText('Integracja ze Spatie Media Library w kolejnym etapie'),
+                    ->columnSpanFull(),
             ]);
     }
 }
