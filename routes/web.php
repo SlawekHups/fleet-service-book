@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/vehicles/{vehicle}/service-book.pdf', \App\Http\Controllers\VehiclePdfController::class)
+    ->name('vehicles.pdf');
+
 Route::get('/', function () {
     return view('welcome');
 });
