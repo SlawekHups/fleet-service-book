@@ -48,6 +48,23 @@ php artisan sail:install --no-interaction
 - Domyślne `app.locale=pl`, `app.fallback_locale=pl`, `app.timezone=Europe/Warsaw`, `faker_locale=pl_PL` są ustawione.
 - `AppServiceProvider` ustawia lokalizację Carbon i strefę czasową podczas bootowania aplikacji.
 
+### Autoryzacja i role (ETAP 3)
+- Laravel Breeze (auth web):
+```bash
+# composer require laravel/breeze --dev
+# php artisan breeze:install blade --dark
+# npm install && npm run build
+# php artisan migrate
+```
+- spatie/laravel-permission (role i uprawnienia):
+```bash
+# composer require spatie/laravel-permission
+# php artisan vendor:publish --provider="Spatie\\Permission\\PermissionServiceProvider"
+# php artisan migrate
+# php artisan db:seed --class=RolesAndPermissionsSeeder
+```
+Uwaga: ustaw w `.env` wartości `ADMIN_EMAIL` i `ADMIN_PASSWORD` dla admina.
+
 ### Proponowane pakiety (komendy instalacji w komentarzach)
 - Filament 4 (panel admina)
 ```bash
@@ -64,6 +81,7 @@ php artisan sail:install --no-interaction
 # composer require spatie/laravel-permission
 # php artisan vendor:publish --provider="Spatie\\Permission\\PermissionServiceProvider"
 # php artisan migrate
+# php artisan db:seed --class=RolesAndPermissionsSeeder
 ```
 - spatie/laravel-activitylog (log zmian)
 ```bash
