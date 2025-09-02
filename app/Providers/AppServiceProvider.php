@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Carbon\CarbonImmutable;
 use Carbon\Carbon;
+use App\Models\MaintenanceRecord;
+use App\Observers\MaintenanceRecordObserver;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +35,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Set default timezone
         date_default_timezone_set(config('app.timezone', 'Europe/Warsaw'));
+
+        // Observe maintenance records to update recurring rules
+        MaintenanceRecord::observe(MaintenanceRecordObserver::class);
     }
 }
