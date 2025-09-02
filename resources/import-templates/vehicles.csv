@@ -1,0 +1,4 @@
+type,vin,make,model,year,registration_number,engine_code,engine_displacement_cc,fuel_type,oil_spec,color,purchase_date,odometer_km
+car,WAUZZZ8V5EA000001,Audi,A3,2014,WX12345,CMBA,1395,petrol,5W30,czarny,2018-05-01,122000
+motorcycle,JYARN231000000001,Yamaha,MT-07,2017,WXM1234,CP2,689,petrol,10W40,niebieski,2019-04-12,24000
+

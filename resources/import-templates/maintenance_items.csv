@@ -1,0 +1,4 @@
+record_invoice_number,part_sku,manufacturer,name,category,qty,unit,unit_price,part_number
+FV/123/2024,OIL-5W30-1L,Castrol,Edge 5W30,oil,4,l,35.50,
+FV/123/2024,FIL-OP-123,MANN,Filter Oleju W712/52,filter_oil,1,szt.,24.99,W712/52
+
