@@ -18,17 +18,23 @@ class PartsTable
                     ->label('SKU')
                     ->searchable(),
                 TextColumn::make('manufacturer')
+                    ->label('Producent')
                     ->searchable(),
                 TextColumn::make('name')
+                    ->label('Nazwa')
                     ->searchable(),
                 TextColumn::make('category')
+                    ->label('Kategoria')
                     ->searchable(),
                 TextColumn::make('unit')
+                    ->label('Jednostka')
                     ->searchable(),
                 TextColumn::make('default_price')
+                    ->label('Cena domyślna')
                     ->numeric()
                     ->sortable(),
                 TextColumn::make('external_url')
+                    ->label('Link zewnętrzny')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

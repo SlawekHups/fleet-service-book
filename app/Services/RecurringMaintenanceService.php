@@ -6,6 +6,7 @@ use App\Models\MaintenanceRecord;
 use App\Models\RecurringMaintenanceRule;
 use App\Models\Vehicle;
 use Carbon\CarbonImmutable;
+use App\Models\AppSetting;
 
 class RecurringMaintenanceService
 {
@@ -16,7 +17,7 @@ class RecurringMaintenanceService
     public function recomputeNextDue(RecurringMaintenanceRule $rule, ?Vehicle $vehicle = null): RecurringMaintenanceRule
     {
         $vehicle = $vehicle ?: $rule->vehicle;
-        $leadDays = (int) config('fleet.lead_time_days', 14);
+        $leadDays = (int) (AppSetting::query()->value('lead_time_days') ?? config('fleet.lead_time_days', 14));
 
         $lastDate = $rule->last_date ? CarbonImmutable::parse($rule->last_date) : null;
         $lastKm = $rule->last_odometer_km;
