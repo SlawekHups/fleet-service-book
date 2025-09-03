@@ -14,16 +14,14 @@ class MaintenanceRecordsTable
     {
         return $table
             ->columns([
-                TextColumn::make('vehicle.registration_number')->label('Pojazd')->searchable(),
-                TextColumn::make('date')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('odometer_km')->label('Przebieg [km]')->numeric()->sortable(),
-                TextColumn::make('type')->label('Typ'),
-                TextColumn::make('vendor.name')->label('Dostawca')->searchable(),
-                TextColumn::make('invoice_number')->label('Faktura')->searchable(),
-                TextColumn::make('total_cost')->label('Kwota')->money('PLN')->sortable(),
-                TextColumn::make('currency')->label('Wal.'),
+                TextColumn::make('vehicle.registration_number')->label(__('app.vehicle'))->searchable(),
+                TextColumn::make('date')->label(__('app.date'))->date()->sortable(),
+                TextColumn::make('odometer_km')->label(__('app.odometer_km'))->numeric()->sortable(),
+                TextColumn::make('type')->label(__('app.type')),
+                TextColumn::make('vendor.name')->label(__('app.vendor'))->searchable(),
+                TextColumn::make('invoice_number')->label(__('app.invoice_number'))->searchable(),
+                TextColumn::make('total_cost')->label(__('app.total_cost'))->money('PLN')->sortable(),
+                TextColumn::make('currency')->label(__('app.currency')),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

@@ -17,15 +17,15 @@ class VehiclesTable
     {
         return $table
             ->columns([
-                TextColumn::make('make')->label('Marka')->searchable(),
-                TextColumn::make('model')->label('Model')->searchable(),
-                TextColumn::make('year')->label('Rocznik')->numeric()->sortable(),
-                TextColumn::make('registration_number')->label('Rejestracja')->searchable()->toggleable(false),
-                TextColumn::make('vin')->label('VIN')->searchable(),
-                TextColumn::make('odometer_km')->label('Przebieg [km]')->numeric()->sortable(),
-                TextColumn::make('next_service_due_date')->label('Nast. serwis (data)')->date()->sortable(),
-                TextColumn::make('next_service_due_km')->label('Nast. serwis (km)')->numeric()->sortable(),
-                IconColumn::make('active')->label('Aktywny')->boolean(),
+                TextColumn::make('make')->label(__('app.make'))->searchable(),
+                TextColumn::make('model')->label(__('app.model'))->searchable(),
+                TextColumn::make('year')->label(__('app.year'))->numeric()->sortable(),
+                TextColumn::make('registration_number')->label(__('app.registration_number'))->searchable()->toggleable(false),
+                TextColumn::make('vin')->label(__('app.vin'))->searchable(),
+                TextColumn::make('odometer_km')->label(__('app.odometer_km'))->numeric()->sortable(),
+                TextColumn::make('next_service_due_date')->label(__('app.next_service_due_date'))->date()->sortable(),
+                TextColumn::make('next_service_due_km')->label(__('app.next_service_due_km'))->numeric()->sortable(),
+                IconColumn::make('active')->label(__('app.active'))->boolean(),
             ])
             ->filters([
                 SelectFilter::make('type')->label('Typ')

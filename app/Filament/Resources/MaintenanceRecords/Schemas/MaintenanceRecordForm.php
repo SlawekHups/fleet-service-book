@@ -16,49 +16,49 @@ class MaintenanceRecordForm
         return $schema
             ->components([
                 Select::make('vehicle_id')
-                    ->label('Pojazd')
+                    ->label(__('app.vehicle'))
                     ->relationship('vehicle', 'registration_number')
                     ->preload()
                     ->searchable()
                     ->required(),
                 DatePicker::make('date')
-                    ->label('Data')
+                    ->label(__('app.date'))
                     ->required(),
                 TextInput::make('odometer_km')
-                    ->label('Przebieg [km]')
+                    ->label(__('app.odometer_km'))
                     ->required()
                     ->numeric(),
                 Select::make('type')
-                    ->label('Typ')
+                    ->label(__('app.type'))
                     ->options([
-                        'service' => 'Serwis',
-                        'repair' => 'Naprawa',
-                        'inspection' => 'Przegląd',
-                        'tire_change' => 'Wymiana opon',
-                        'accident' => 'Kolizja',
-                        'other' => 'Inne',
+                        'service' => __('app.maintenance_type.service'),
+                        'repair' => __('app.maintenance_type.repair'),
+                        'inspection' => __('app.maintenance_type.inspection'),
+                        'tire_change' => __('app.maintenance_type.tire_change'),
+                        'accident' => __('app.maintenance_type.accident'),
+                        'other' => __('app.maintenance_type.other'),
                     ])
                     ->required(),
                 Select::make('vendor_id')
-                    ->label('Dostawca / Serwis')
+                    ->label(__('app.vendor'))
                     ->relationship('vendor', 'name')
                     ->preload()
                     ->searchable(),
-                TextInput::make('invoice_number')->label('Faktura'),
+                TextInput::make('invoice_number')->label(__('app.invoice_number')),
                 TextInput::make('total_cost')
-                    ->label('Kwota')
+                    ->label(__('app.total_cost'))
                     ->required()
                     ->numeric()
                     ->default(0.0),
                 TextInput::make('currency')
-                    ->label('Waluta')
+                    ->label(__('app.currency'))
                     ->required()
                     ->default('PLN'),
                 Textarea::make('notes')
-                    ->label('Notatki')
+                    ->label(__('app.notes'))
                     ->columnSpanFull(),
                 SpatieMediaLibraryFileUpload::make('attachments')
-                    ->label('Załączniki (faktury, zdjęcia)')
+                    ->label(__('Załączniki'))
                     ->collection('attachments')
                     ->multiple()
                     ->downloadable()

@@ -9,7 +9,10 @@ use Filament\Widgets\TableWidget as BaseWidget;
 
 class OverdueMaintenanceWidget extends BaseWidget
 {
-    protected static ?string $heading = 'Przeterminowane serwisy';
+    public function getHeading(): string
+    {
+        return __('Przeterminowane serwisy');
+    }
 
     public function table(Table $table): Table
     {

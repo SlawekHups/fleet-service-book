@@ -26,6 +26,22 @@ class HomeDashboard extends Dashboard
     protected function getHeaderActions(): array
     {
         return [
+            Action::make('language')
+                ->label('Język')
+                ->icon('heroicon-o-globe-alt')
+                ->form([
+                    Select::make('locale')
+                        ->label('Wybierz język')
+                        ->options(['pl' => 'Polski', 'en' => 'English'])
+                        ->default(app()->getLocale())
+                        ->required(),
+                ])
+                ->action(function (array $data) {
+                    session(['locale' => $data['locale']]);
+                    $referer = request()->headers->get('referer');
+                    $target = $referer ?: url('/admin');
+                    return redirect()->to($target);
+                }),
             Action::make('add_service')
                 ->label('Dodaj serwis')
                 ->icon('heroicon-o-wrench-screwdriver')

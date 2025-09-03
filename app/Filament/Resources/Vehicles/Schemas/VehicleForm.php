@@ -18,31 +18,37 @@ class VehicleForm
         return $schema
             ->components([
                 Select::make('type')
-                    ->label('Typ')
-                    ->options(['car' => 'Samochód', 'motorcycle' => 'Motocykl'])
+                    ->label(__('app.type'))
+                    ->options(['car' => __('app.vehicle_type.car'), 'motorcycle' => __('app.vehicle_type.motorcycle')])
                     ->required(),
-                TextInput::make('vin')->label('VIN')->required()->unique(ignoreRecord: true),
-                TextInput::make('make')->label('Marka')->required(),
-                TextInput::make('model')->label('Model')->required(),
-                TextInput::make('year')->label('Rok')->required()->numeric()->minValue(1900)->maxValue((int) date('Y') + 1),
-                TextInput::make('registration_number')->label('Rejestracja')->required()->unique(ignoreRecord: true),
-                TextInput::make('engine_code')->label('Kod silnika'),
-                TextInput::make('engine_displacement_cc')->label('Poj. silnika [cc]')->numeric(),
-                Select::make('fuel_type')->label('Paliwo')
-                    ->options(['petrol' => 'Benzyna', 'diesel' => 'Diesel', 'hybrid' => 'Hybryda', 'ev' => 'EV', 'lpg' => 'LPG'])
+                TextInput::make('vin')->label(__('app.vin'))->required()->unique(ignoreRecord: true),
+                TextInput::make('make')->label(__('app.make'))->required(),
+                TextInput::make('model')->label(__('app.model'))->required(),
+                TextInput::make('year')->label(__('app.year'))->required()->numeric()->minValue(1900)->maxValue((int) date('Y') + 1),
+                TextInput::make('registration_number')->label(__('app.registration_number'))->required()->unique(ignoreRecord: true),
+                TextInput::make('engine_code')->label(__('app.engine_code')),
+                TextInput::make('engine_displacement_cc')->label(__('app.engine_displacement_cc'))->numeric(),
+                Select::make('fuel_type')->label(__('app.fuel_type'))
+                    ->options([
+                        'petrol' => __('app.fuel.petrol'),
+                        'diesel' => __('app.fuel.diesel'),
+                        'hybrid' => __('app.fuel.hybrid'),
+                        'ev' => __('app.fuel.ev'),
+                        'lpg' => __('app.fuel.lpg'),
+                    ])
                     ->required(),
-                TextInput::make('oil_spec')->label('Spec. oleju')->required(),
-                TextInput::make('color')->label('Kolor'),
-                DatePicker::make('purchase_date')->label('Data zakupu'),
-                TextInput::make('odometer_km')->label('Przebieg [km]')->required()->numeric()->default(0),
-                DateTimePicker::make('odometer_updated_at')->label('Aktualizacja przebiegu'),
-                Textarea::make('notes')->label('Notatki')
+                TextInput::make('oil_spec')->label(__('app.oil_spec'))->required(),
+                TextInput::make('color')->label(__('app.color')),
+                DatePicker::make('purchase_date')->label(__('app.purchase_date')),
+                TextInput::make('odometer_km')->label(__('app.odometer_km'))->required()->numeric()->default(0),
+                DateTimePicker::make('odometer_updated_at')->label(__('Aktualizacja przebiegu')),
+                Textarea::make('notes')->label(__('app.notes'))
                     ->columnSpanFull(),
-                Toggle::make('active')->label('Aktywny')->required(),
-                DatePicker::make('next_service_due_date')->label('Następny serwis (data)'),
-                TextInput::make('next_service_due_km')->label('Następny serwis (km)')->numeric(),
+                Toggle::make('active')->label(__('app.active'))->required(),
+                DatePicker::make('next_service_due_date')->label(__('app.next_service_due_date')),
+                TextInput::make('next_service_due_km')->label(__('app.next_service_due_km'))->numeric(),
                 SpatieMediaLibraryFileUpload::make('photos')
-                    ->label('Zdjęcia / Skany')
+                    ->label(__('Zdjęcia / Skany'))
                     ->collection('photos')
                     ->multiple()
                     ->downloadable()

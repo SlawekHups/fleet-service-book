@@ -15,35 +15,35 @@ class RecurringMaintenanceRulesTable
     {
         return $table
             ->columns([
-                TextColumn::make('vehicle.id')
-                    ->searchable(),
-                TextColumn::make('component'),
-                TextColumn::make('interval_km')
+                TextColumn::make('vehicle.registration_number')
+                    ->label(__('app.vehicle'))->searchable(),
+                TextColumn::make('component')->label(__('app.category')),
+                TextColumn::make('interval_km')->label(__('app.next_service_due_km'))
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('interval_months')
+                TextColumn::make('interval_months')->label(__('Miesiące'))
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('lastRecord.id')
+                TextColumn::make('lastRecord.id')->label(__('Ostatni rekord'))
                     ->searchable(),
-                TextColumn::make('last_date')
+                TextColumn::make('last_date')->label(__('app.date'))
                     ->date()
                     ->sortable(),
-                TextColumn::make('last_odometer_km')
+                TextColumn::make('last_odometer_km')->label(__('app.odometer_km'))
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('next_due_date')
+                TextColumn::make('next_due_date')->label(__('app.next_service_due_date'))
                     ->date()
                     ->sortable(),
-                TextColumn::make('next_due_km')
+                TextColumn::make('next_due_km')->label(__('app.next_service_due_km'))
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('lead_time_days')
+                TextColumn::make('lead_time_days')->label(__('Lead time (dni)'))
                     ->numeric()
                     ->sortable(),
-                IconColumn::make('notify')
+                IconColumn::make('notify')->label(__('Powiadomienia'))
                     ->boolean(),
-                IconColumn::make('active')
+                IconColumn::make('active')->label(__('app.active'))
                     ->boolean(),
                 TextColumn::make('created_at')
                     ->dateTime()

@@ -10,7 +10,10 @@ use Filament\Widgets\TableWidget as BaseWidget;
 
 class UpcomingMaintenanceWidget extends BaseWidget
 {
-    protected static ?string $heading = 'Nadchodzące serwisy';
+    public function getHeading(): string
+    {
+        return __('Nadchodzące serwisy');
+    }
 
     public function table(Table $table): Table
     {
@@ -36,9 +39,10 @@ class UpcomingMaintenanceWidget extends BaseWidget
                         \Filament\Forms\Components\DatePicker::make('from')->label('Od'),
                         \Filament\Forms\Components\DatePicker::make('to')->label('Do'),
                     ])
-                    ->query(function ($q, array $data) {
-                        if ($data['from'] ?? null) $q->whereDate('next_due_date', '>=', $data['from']);
-                        if ($data['to'] ?? null) $q->whereDate('next_due_date', '<=', $data['to']);
+                    ->query(function ($query, array $data) {
+                        return $query
+                            ->when($data['from'] ?? null, fn ($q, $date) => $q->whereDate('next_due_date', '>=', $date))
+                            ->when($data['to'] ?? null, fn ($q, $date) => $q->whereDate('next_due_date', '<=', $date));
                     }),
             ]);
     }
