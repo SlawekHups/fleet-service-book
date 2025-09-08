@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Parts\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Schemas\Schema;
 
 class PartForm
@@ -36,6 +37,13 @@ class PartForm
                     ->numeric(),
                 TextInput::make('external_url')
                     ->label(__('app.external_url')),
+                SpatieMediaLibraryFileUpload::make('photos')
+                    ->label('Zdjęcia części')
+                    ->collection('part_photos')
+                    ->image()
+                    ->imageEditor()
+                    ->multiple()
+                    ->columnSpanFull(),
             ]);
     }
 }

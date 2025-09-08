@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Enums\Fit;
 
-class Part extends Model
+class Part extends Model implements HasMedia
 {
-    use HasFactory, LogsActivity;
+    use HasFactory, LogsActivity, InteractsWithMedia;
 
     protected $fillable = [
         'sku','manufacturer','name','description','category','unit','default_price','external_url'
@@ -38,6 +42,16 @@ class Part extends Model
     public function maintenanceItems(): HasMany
     {
         return $this->hasMany(MaintenanceItem::class);
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb')
+            ->fit(Fit::Crop, 200, 200)
+            ->width(200)
+            ->height(200)
+            ->nonQueued();
     }
 }
 
