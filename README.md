@@ -269,5 +269,5 @@ MAIL_FROM_NAME="Fleet Service Book"
 - Brak tabeli `media` – uruchom migracje dla Media Library
 - Cache po aktualizacjach Filament/Laravel: `php artisan optimize:clear`
 
-### Licencja
+### Licencja hUps
 Projekt edukacyjny – użycie wg potrzeb własnych.
